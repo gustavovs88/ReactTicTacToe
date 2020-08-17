@@ -103,16 +103,18 @@ class Game extends React.Component {
     const historyPositionArray = history.map((item) => {
       return item.pos
     })
-   //const position = Object.values(history.pos)
     const moves = history.map((step, move) => {
       const desc = move ?
         'Go to move #' + move :
         'Go to game start';
-      // const positionMove = position[move]
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}><strong>{desc}</strong></button>
-          {historyPositionArray[move]}
+          <button onClick={() => this.jumpTo(move)}>
+            {move === this.state.stepNumber ? <strong>{desc}</strong> : desc}
+          </button>
+            {move === this.state.stepNumber ?
+            <p><strong>Position (col,row) : {historyPositionArray[move]}</strong></p> :
+            <p>Position (col,row) : {historyPositionArray[move]}</p>}
         </li>
         
       );
