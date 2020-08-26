@@ -3,10 +3,19 @@ body {
   margin: 20px;
 }
 
-ol, ul {
+.olIncreasing {
   padding-left: 30px;
 }
 
+.olDescending {
+  padding-right: 30px;
+  padding-left: 0;
+}
+
+.olDescending, .liDescending {
+  transform: rotate(-180deg);
+  padding-bottom: 0.1px;
+}
 .board-row:after {
   clear: both;
   content: "";
@@ -20,6 +29,22 @@ ol, ul {
 .square {
   background: #fff;
   border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.winner-square {
+  background: #fff;
+  border: 1px solid #999;
+  color: red;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -47,4 +72,7 @@ ol, ul {
 
 .game-info {
   margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
