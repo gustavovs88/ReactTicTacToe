@@ -1,5 +1,27 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# React Tic-Tac-Toe
+
+This project was build following the tutorial from React documentation.
+
+All ideas from the documentation were implemented:
+1 - Display the location for each move in the format (col, row) in the move history list.
+2 - Bold the currently selected item in the move list.
+3 - Rewrite Board to use two loops to make the squares instead of hardcoding them.
+4 - Add a toggle button that lets you sort the moves in either ascending or descending order.
+5 - When someone wins, highlight the three squares that caused the win.
+6 - When no one wins, display a message about the result being a draw.
+
+The code from the tutorial was refactored to seggregate all components in specific pages and styles were added with the styled-components lib.
+
+## Using this project
+
+If you want to use this project just clone it and install all dependencies:
+
+`git clone https://github.com/gustavovs88/ReactTicTacToe.git`
+
+`yarn`
+
 ## Available Scripts
 
 In the project directory, you can run:
