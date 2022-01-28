@@ -20,6 +20,14 @@ All ideas from the documentation were implemented:
 
 The code from the tutorial was refactored to seggregate all components in specific pages and styles were added with the styled-components lib.
 
+## Images gallery
+
+![plot](./images/image1.png)
+
+![plot](./images/image3.png)
+
+![plot](./images/image2.png)
+
 ## Using this project
 
 If you want to use this project just clone it and install all dependencies:
