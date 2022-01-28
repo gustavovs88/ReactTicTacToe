@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import { colors } from "../../global/colors";
 
 export const squareStyle = styled.button`
-  background: #fff;
-  border: 1px solid #999;
+  @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+  font-family: "Architects Daughter", cursive;
+  background: ${colors.lightGreen};
+  border: 2px solid ${colors.purple};
   float: left;
-  color: ${(props) => (props.winner ? "blue" : "red")};
+  color: ${(props) => (props.winner ? "green" : "black")};
   font-size: 75px;
   font-weight: bold;
   line-height: 100px;

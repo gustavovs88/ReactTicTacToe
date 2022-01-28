@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import * as S from "./styled";
 
 const MovesList = (props) => {
   const { status, history, stepNumber, jumpTo } = props;
@@ -18,23 +19,13 @@ const MovesList = (props) => {
     buttonOrder = "Descending Order";
   }
 
-  const historyPositionArray = history.map((item) => {
-    return item.pos;
-  });
   const moves = history.map((step, move) => {
     const desc = move ? "Go to move #" + move : "Go to game start";
     return (
       <li className={liOrder} key={move}>
         <button onClick={() => jumpTo(move)}>
-          {move === stepNumber ? <strong>{desc}</strong> : desc}
+          {move === stepNumber ? <span>This is move #{move}</span> : desc}
         </button>
-        {move === stepNumber ? (
-          <p>
-            <strong>Position (col,row) : {historyPositionArray[move]}</strong>
-          </p>
-        ) : (
-          <p>Position (col,row) : {historyPositionArray[move]}</p>
-        )}
       </li>
     );
   });
@@ -44,13 +35,14 @@ const MovesList = (props) => {
   };
 
   return (
-    <>
-      <div className="game-info">
-        <div>{status}</div>
-        <button onClick={() => invertMoves()}>{buttonOrder}</button>
-        <ol className={olOrder}>{moves}</ol>
-      </div>
-    </>
+    <S.Wrapper>
+      <h1>Game Info</h1>
+      <h2>{status}</h2>
+      <button onClick={() => invertMoves()} className="invert-button">
+        {buttonOrder}
+      </button>
+      <ul className={olOrder}>{moves}</ul>
+    </S.Wrapper>
   );
 };
 

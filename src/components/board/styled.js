@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  color: red;
+  h1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+  }
 `;

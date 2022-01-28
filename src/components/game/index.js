@@ -1,6 +1,8 @@
 import React from "react";
 import Board from "../board";
+import EndGameModal from "../end-game-modal";
 import MovesList from "../moves-list";
+import * as S from "./styled";
 
 function calculateWinner(squares) {
   const lines = [
@@ -20,7 +22,11 @@ function calculateWinner(squares) {
       return [lines[i], squares[a]];
     }
   }
-  return null;
+  if (!squares.includes(null)) {
+    return "nobody wins";
+  }
+
+  return false;
 }
 
 class Game extends React.Component {
@@ -79,19 +85,30 @@ class Game extends React.Component {
     });
   }
 
+  playAgain() {
+    this.setState({
+      history: [
+        {
+          squares: Array(9).fill(null),
+          pos: "initial",
+        },
+      ],
+
+      stepNumber: 0,
+      xIsNext: true,
+      moveListInverted: false,
+    });
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    let status;
-    if (winner) {
-      status = "And the winner is: " + winner[1];
-    } else {
-      status = "Next Player: " + (this.state.xIsNext ? "X" : "0");
-    }
+    let status = "Current Player: " + (this.state.xIsNext ? "X" : "0");
+
     return (
-      <div className="game">
+      <S.Game>
         <div className="game-board">
           <Board
             winnerSquares={winner ? winner[0] : false}
@@ -105,7 +122,8 @@ class Game extends React.Component {
           stepNumber={this.state.stepNumber}
           jumpTo={(move) => this.jumpTo(move)}
         />
-      </div>
+        <EndGameModal winner={winner} playAgain={() => this.playAgain()} />
+      </S.Game>
     );
   }
 }

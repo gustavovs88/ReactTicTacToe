@@ -20,25 +20,30 @@ class Board extends React.Component {
     const numberOfColumns = 3;
     let row = [];
     let table = [{}];
-    for (var i = 0; i < numberOfRows * numberOfColumns; i++) {
+    for (let i = 0; i < numberOfRows * numberOfColumns; i++) {
       row.push(i);
     }
-    for (var ir = 0; ir < numberOfColumns; ir++) {
+    for (let ir = 0; ir < numberOfColumns; ir++) {
       const breakedRow = row.splice(0, numberOfRows);
       table.push(breakedRow);
     }
     table.splice(0, 1);
     const tableConstruct = table.map((element) => {
       return (
-        <S.Wrapper key={element}>
+        <div key={element}>
           {element.map((item) => {
             return this.renderSquare(item);
           })}
-        </S.Wrapper>
+        </div>
       );
     });
 
-    return <div>{tableConstruct}</div>;
+    return (
+      <S.Wrapper>
+        <h1>React Tic-Tac-Toe</h1>
+        {tableConstruct}
+      </S.Wrapper>
+    );
   }
 }
 
